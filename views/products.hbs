@@ -1,0 +1,50 @@
+<div class="container my-5">
+    <div class="row">
+        <h2 style="text-align: center">Liste des produits disponible </h2>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <!--<th scope="col">#</th>-->
+                        <th scope="col">Nom</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Produit favoris</th>
+                        <th scope="col">Poids</th>
+                        <th scope="col">Categorie</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each products }}
+                    <tr>
+                        <!--<td>{{@index}}</td>-->
+                        <td>{{name}}</td>
+                        <td>{{description}}</td>
+                        <td>{{price}}</td>
+                        <td>{{quantity}}</td>
+                        <td>{{isBest}}</td>
+                        <td>{{weight}}</td>
+                        <td>{{category.name }}</td>
+                        <td>
+                            <a href="/product-update/{{id}}"><button type="button"
+                                    class="btn btn-outline-primary btn-sm mx-2">Modifier</button></a>
+                        </td>
+                        <td>
+                            <form method="POST" action="/product-delete/{{id}}/?_method=DELETE">
+                                <button onclick="return confirm('Confirmer la suppression ?')" type="submit"
+                                    class="btn btn-outline-danger btn-sm mx-2">Supprimer
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

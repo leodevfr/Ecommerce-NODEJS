@@ -1,0 +1,110 @@
+{{!-- <div class="alert alert-success text-center success-message" role="alert">
+    A simple success alert—check it out!
+</div> --}}
+<div class="container">
+    <div class="row">
+        {{#if product}}
+        <h2 style="text-align: center">Modifier un article</h2>
+        {{else}}
+        <h2 style="text-align: center">Ajouter un article</h2>
+        {{/if}}
+    </div>
+    <div class="row">
+        {{#if product}}
+        <form action="/product-update/{{product.id}}/?_method=PUT" method="POST"
+            enctype="application/x-www-form-urlencoded" style="display: grid; gap: 5%">
+            {{else}}
+            <form action="/product-create" method="POST" enctype="application/x-www-form-urlencoded"
+                style="display: grid; gap: 5%">
+                {{/if}}
+
+                <div class="form-group ">
+                    {{!-- <div class="mb-3">
+                        {{#if product}}
+                        <label for="formFile" class="form-label">Choisissez une nouvelle image</label>
+                        {{else}}
+                        <label for="formFile" class="form-label">Choisissez une image</label>
+                        {{/if}}
+
+                        <input name="imageUrl" class="form-control" type="file" id="formFile" required>
+                    </div> --}}
+
+                    <label for="inputTitle">Titre</label>
+                    <input name="name" type="text" class="form-control" id="inputTitle"
+                        placeholder="Nom de votre produit" {{#if product}} value="{{product.name}}" {{/if}} required>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDescription">Description</label>
+                    <input name="description" type="text" class="form-control" placeholder="Décrivez votre produit"
+                        {{#if product}} value="{{product.description}}" {{/if}} required>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDescription">Prix</label>
+                    <input name="price" type="number" step="0.01" class="form-control" placeholder="€" {{#if product}}
+                        value="{{product.price}}" {{/if}} required>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input name="isBest" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{#if
+                        product.isBest}} checked {{/if}}>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Produit mis en avant</label>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="exampleFormControlSelect1" class="mb-1">Categorie</label>
+                    <select name="categoriesId" class="form-control">
+                        {{#if product}}
+                        <option value="{{product.category.id}}" selected>{{product.category.name}}</option>
+                        {{#each categories}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                        {{else}}
+                        <option>Choissisez une categorie</option>
+                        {{#each categories}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDescription">Quantité</label>
+                    <input name="quantity" type="number" class="form-control" placeholder="quantité" {{#if product}}
+                        value="{{product.price}}" {{/if}} {{#if get}} value="{{get.quantity}}" {{/if}} required>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDescription">Poids</label>
+                    <input name="weight" type="number" class="form-control" placeholder="poids" {{#if product}}
+                        value="{{product.price}}" {{/if}} {{#if get}} value="{{get.weight}}" {{/if}} required>
+                </div>
+
+
+                <div class="form-group">
+                    {{!-- Affiche les messages d'erreur --}}
+                    {{#if errors}}
+                    <div class="row justify-content-center">
+                        <div>
+                            <ul class="list-group">
+                                {{#each errors}}
+                                <li class="list-group-item list-group-item-danger">{{this.msg}}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#if product}}
+
+                    <button type="submit" class="btn btn-primary mt-4 ">Modifier</button>
+
+                    {{else}}
+
+                    <button type="submit" class="btn btn-primary mt-4 ">Ajouter</button>
+
+                    {{/if}}
+                </div>
+            </form>
+    </div>
+</div>

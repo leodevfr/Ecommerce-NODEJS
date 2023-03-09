@@ -1,0 +1,56 @@
+{{!-- <div class="alert alert-success text-center success-message" role="alert">
+    A simple success alert—check it out!
+</div> --}}
+<div class="container">
+    <div class="row">
+        <h2 style="text-align: center">Modifier un utilisateur</h2>
+    </div>
+    <div class="row">
+        <form action="/user-update/{{user.id}}" method="POST" enctype="application/x-www-form-urlencoded"
+            style="display: grid; gap: 5%">
+            <div class="form-group ">
+                <label for="inputTitle">Nom</label>
+                <input name="firstName" type="text" class="form-control" id="inputTitle" placeholder="Votre nom"
+                    value="{{product.firstName}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputDescription">Prénom</label>
+                <input name="lastName" type="text" class="form-control" placeholder="votre prénom"
+                    value="{{user.lastName}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputDescription">Téléphone</label>
+                <input name="email" type="email" class="form-control" placeholder="Votre email" value="{{user.email}}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="inputDescription">Téléphone</label>
+                <input name="phone" type="number" class="form-control" placeholder="Votre numero de téléphone"
+                    value="{{user.phone}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputDescription">Role</label>
+                <input name="phone" type="number" class="form-control" placeholder="Votre numero de téléphone"
+                    value="{{user.phone}}" required>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck1">Admin</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck2">Seller</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck3">Buyer</label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-secondary mt-4 ">Ajouter</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="/form-category-update/{{categorie.id}}" method="POST">
+                <div class="form-group">
+                    <label for="inputTitle">Titre</label>
+                    <input name="categorie" type="text" class="form-control" id="inputTitle"
+                        placeholder="Nom de votre categorie" value="{{categorie.name}}"  required>
+                    <button type="submit" class="btn btn-secondary mt-3">Modifier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
